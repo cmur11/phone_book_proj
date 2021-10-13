@@ -1,22 +1,28 @@
 import logo from './logo.svg';
 import './App.css';
+import React,{useState}  from 'react';
+import Form from './components/Form.js'
 
 function App() {
+  const [form,setForm] = useState({
+     firstName: "",
+     lastName: "",
+     phoneNumber: "",
+     address: "",
+     note: ""
+
+  })
+
+  function handleFormData(e){
+      setForm({...form, [e.target.name]: e.target.value})
+  }
+  console.log(form)
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn Cam
-        </a>
+      
+         <Form form={form} handleFormData = {handleFormData}/>
+  
       </header>
     </div>
   );
